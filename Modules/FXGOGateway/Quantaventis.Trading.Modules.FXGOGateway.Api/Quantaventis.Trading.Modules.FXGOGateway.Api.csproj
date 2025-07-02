@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="module.fxgogateway.development.json" />
+    <None Remove="module.fxgogateway.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="module.fxgogateway.development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="module.fxgogateway.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.FXGOGateway.Domain\Quantaventis.Trading.Modules.FXGOGateway.Domain.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.FXGOGateway.Infrastructure\Quantaventis.Trading.Modules.FXGOGateway.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\Out\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Events\In\**" />
+    <EmbeddedResource Remove="Events\In\**" />
+    <None Remove="Events\In\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="module.emsx.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="module.emsx.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.EMSX.Infrastructure\Quantaventis.Trading.Modules.EMSX.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Bloomberglp.Blpapi">
+      <HintPath>..\Quantaventis.Trading.Modules.EMSX.Infrastructure\lib\Bloomberglp.Blpapi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

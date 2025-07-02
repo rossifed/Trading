@@ -1,0 +1,94 @@
+<style>
+    .negative-value {
+        color: red;
+    }
+
+    .positive-value {
+        color: black; /* or any default color you'd like for positive/zero values */
+    }
+</style>
+@if (TargetWeightValuations != null && TargetWeightValuations.Any())
+{
+
+<RadzenDataGrid TItem="TargetWeightValuation"
+                Data="@TargetWeightValuations"
+                AllowSorting="true"
+                AllowFiltering="true"
+                PageSize="10">
+    <Columns>
+            <RadzenDataGridColumn TItem="TargetWeightValuation" Title="Symbol" >
+                <Template Context="data">
+                <RadzenText TextStyle="TextStyle.Subtitle2" >
+                        @(data.Instrument?.Symbol)
+                    </RadzenText>
+                        
+                    
+                    
+                </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="TargetWeightValuation" Property="Weight" Title="Weight" Sortable="true">
+                <Template Context="data"  >
+                        <RadzenText  class="@GetNumberStyle(data.Weight)">
+                                     @FormatPercentage(data.Weight )
+                    </RadzenText>
+       
+            
+                </Template>
+
+        </RadzenDataGridColumn> 
+                <RadzenDataGridColumn TItem="TargetWeightValuation" Property="TargetQuantity" Title="Target Quantity" Sortable="true" />
+        <RadzenDataGridColumn TItem="TargetWeightValuation" Property="Price" Title="Price" Sortable="true" />
+       <RadzenDataGridColumn TItem="TargetWeightValuation" Property="PriceCurrency" Title="Currency" Sortable="true" />
+        <RadzenDataGridColumn TItem="TargetWeightValuation" Property="PricedOn" Title="Priced On" Sortable="true">
+               <Template Context="data">
+                    @data.PricedOn.ToString("dd/MM/yyyy") <!-- Replace 'your-date-format' with your desired format. E.g., "dd/MM/yyyy" -->
+             </Template>
+        </RadzenDataGridColumn> 
+        
+        <RadzenDataGridColumn TItem="TargetWeightValuation" Property="InstrumentValue" Title="Instrument Value" Sortable="true" />
+
+        <RadzenDataGridColumn TItem="TargetWeightValuation" Property="TargetNetExposure" Title="Net Exposure" Sortable="true">
+                <Template Context="data">
+                    <RadzenText  class="@GetNumberStyle(data.TargetNetExposure)">
+                         @FormatNumber(@data.TargetNetExposure)
+                    </RadzenText>
+                </Template>
+        </RadzenDataGridColumn> 
+        <RadzenDataGridColumn TItem="TargetWeightValuation" Property="TargetGrossExposure" Title="Gross Exposure" Sortable="true">
+                <Template Context="data">
+                    <RadzenText  class="@GetNumberStyle(data.TargetGrossExposure)">
+                        @FormatNumber(@data.TargetGrossExposure)
+                    </RadzenText>
+                </Template>
+            </RadzenDataGridColumn> 
+       
+    </Columns>
+</RadzenDataGrid>
+}
+else
+{
+    <p>No Valuated Target Weights to display...</p>
+}
+
+
+
+
+@code {
+    @using Quantaventis.Trading.Modules.Valuation.Infrastructure.Entities
+    @using Radzen.Blazor;
+    [Parameter]
+    public IEnumerable<TargetWeightValuation> TargetWeightValuations { get; set; }
+    public string GetNumberStyle(decimal number)
+    {
+        return number < 0 ? "negative-value" : "positive-value";
+    }
+    public string FormatPercentage(decimal number)
+    {
+        return $"{Math.Round(number * 100, 3)}%";
+    }
+
+    public string FormatNumber(decimal number)
+    {
+        return $"{number:#,###}".Replace(',', '\'');
+    }
+}

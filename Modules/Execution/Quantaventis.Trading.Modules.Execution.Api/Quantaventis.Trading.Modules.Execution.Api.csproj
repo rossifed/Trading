@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="module.execution.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="module.execution.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Quartz" Version="3.9.0" />
+    <PackageReference Include="Quartz.AspNetCore" Version="3.9.0" />
+    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.Execution.Domain\Quantaventis.Trading.Modules.Execution.Domain.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.Execution.Infrastructure\Quantaventis.Trading.Modules.Execution.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\In\" />
+  </ItemGroup>
+
+</Project>

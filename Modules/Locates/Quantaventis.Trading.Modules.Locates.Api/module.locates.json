@@ -1,0 +1,8 @@
+{
+  "locates": {
+    "module": {
+      "name": "Locates",
+      "enabled": true
+    }
+  }
+}

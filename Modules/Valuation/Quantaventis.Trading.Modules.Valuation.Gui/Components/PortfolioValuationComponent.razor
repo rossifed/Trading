@@ -1,0 +1,136 @@
+@inject IPortfolioValuationDao PortfolioValuationDao;
+
+<style>
+    .consistent-width {
+        width: 250px;
+        display: inline-block;
+    }
+
+    .field-container {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .two-columns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .column {
+        flex: 1;
+    }
+
+    .consistent-label {
+        width: 150px;
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 10px;
+    }
+</style>
+
+@if (Valuation != null)
+{
+    <RadzenTemplateForm TItem="PortfolioValuation" Data="@Valuation">
+        <RadzenFieldset>
+            <div class="two-columns">
+                <!-- First Column -->
+                <div class="column">
+                    <div class="field-container">
+                        <RadzenLabel Text="Portfolio Value:" Class="consistent-label" />
+                        <RadzenTextBox Value="@FormatValue(Valuation.TotalValue, Valuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                    </div>
+                    <div class="field-container">
+                        <RadzenLabel Text="Valuated On:" Class="consistent-label" />
+                        <RadzenTextBox Value="@Valuation.ValuationDate.ToString("yyyy-MM-dd")" ReadOnly="true" Class="consistent-width" />
+                    </div>
+                    <div class="field-container">
+                        <RadzenLabel Text="Valuation Currency:" Class="consistent-label" />
+                        <RadzenTextBox Value="@Valuation.Currency" ReadOnly="true" Class="consistent-width" />
+                    </div>
+                </div>
+
+                <!-- Second Column -->
+                <div class="column">
+                    
+                    <div class="field-container">
+                        <RadzenLabel Text="Net Exposure:" Class="consistent-label" />
+                        <RadzenTextBox Value="@FormatValue(Valuation.NetExposure, Valuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                    </div>
+                    <div class="field-container">
+                        <RadzenLabel Text="Gross Exposure:" Class="consistent-label" />
+                        <RadzenTextBox Value="@FormatValue(Valuation.GrossExposure, Valuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                    </div>
+                    <div class="field-container">
+                        <RadzenLabel Text="PnL:" Class="consistent-label" />
+                        <RadzenTextBox Value="@FormatPercentage(Valuation.PnL)" ReadOnly="true" Class="consistent-width" />
+                    </div>
+                    <div class="field-container">
+                        <RadzenLabel Text="ROI:" Class="consistent-label" />
+                        <RadzenTextBox Value="@FormatPercentage(Valuation.Roi)" ReadOnly="true" Class="consistent-width" />
+                    </div>
+                </div>
+            </div>
+        </RadzenFieldset>
+    </RadzenTemplateForm>
+
+    <PositionValuationComponent PositionValuations="@Valuation.PositionValuations" />
+}
+else
+{
+    @if (SelectedPortfolioId == null || SelectedPortfolioId == 0)
+    {
+        <p>No Portfolio Selected...</p>
+    }
+
+    else    
+    {
+        <p>No Portfolio Valuation Found...</p>
+    }
+
+
+}
+
+@code {
+    @using Quantaventis.Trading.Modules.Valuation.Infrastructure.Entities;
+    @using Quantaventis.Trading.Modules.Valuation.Gui.Dao;
+    @using Radzen.Blazor;
+
+    [Parameter]
+    public byte? SelectedPortfolioId { get; set; }
+
+    private PortfolioValuation? Valuation;
+    private string FormatValue(decimal value, string currency)
+    {
+        return $"{value:0,0} {currency}";
+    }
+
+    private string FormatPercentage(decimal percentage)
+    {
+        return $"{percentage:P3}";
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        await FetchData();
+    }
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+    private async Task FetchData()
+    {
+        if (SelectedPortfolioId != null)
+        {
+            // Fetch data using SelectedPortfolioId
+            Valuation = await PortfolioValuationDao.GetLastByPortfolioIdAsync(SelectedPortfolioId.Value);
+
+            // In a real-world scenario, you would probably be calling an API here.
+        }
+        else
+        {
+            //   Valuation = null;
+        }
+    }
+}
+

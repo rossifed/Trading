@@ -1,0 +1,257 @@
+GO
+SET IDENTITY_INSERT [ord].[OrderSide] ON 
+GO
+INSERT [ord].[OrderSide] ([OrderSideId], [Mnemonic], [Name]) VALUES (1, N'BUY', N'Buy Order')
+GO
+INSERT [ord].[OrderSide] ([OrderSideId], [Mnemonic], [Name]) VALUES (2, N'SELL', N'Sell Order')
+GO
+SET IDENTITY_INSERT [ord].[OrderSide] OFF
+GO
+GO
+SET IDENTITY_INSERT [instr].[Exchange] OFF
+GO
+SET IDENTITY_INSERT [instr].[FutureContractMonth] ON 
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (1, N'F', N'January'))
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (2, N'G', N'February')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (3, N'H', N'March')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (4, N'J', N'April')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (5, N'K', N'May')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (6, N'M', N'June')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (7, N'N', N'July')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (8, N'Q', N'August')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (9, N'U', N'September')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (10, N'V', N'October')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (11, N'X', N'November')
+GO
+INSERT [instr].[FutureContractMonth] ([FutureContractMonthId], [Code], [Name]) VALUES (12, N'Z', N'December')
+GO
+SET IDENTITY_INSERT [instr].[FutureContractMonth] OFF
+GO
+SET IDENTITY_INSERT [instr].[InstrumentType] ON 
+GO
+INSERT [instr].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (1, N'EQU', N'Cash Equity')
+GO
+INSERT [instr].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (2, N'GENFUT', N'Generic Future Contract')
+GO
+INSERT [instr].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (3, N'FUT', N'Monthly Future Contract')
+GO
+INSERT [instr].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (4, N'CurrencyPair', N'CurrencyPair Currency Pair ')
+GO
+INSERT [instr].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (5, N'CurrencyPairFWD', N'FX Forward')
+GO
+INSERT [instr].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (6, N'CFD', N'Contract For Difference')
+GO
+SET IDENTITY_INSERT [instr].[InstrumentType] OFF
+GO
+SET IDENTITY_INSERT [instr].[MarketSector] ON 
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (1, N'Equity', N'Equity')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (2, N'Comdty', N'Commodity')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (3, N'Corp', N'Corporate')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (4, N'Curncy', N'Currency')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (5, N'Govt', N'Government')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (6, N'Index', N'Index')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (7, N'M-Mkt', N'Money Market')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (8, N'Mtge', N'Mortgage')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (9, N'Muni', N'Muni')
+GO
+INSERT [instr].[MarketSector] ([MarketSectorId], [Mnemonic], [Name]) VALUES (10, N'Pfd', N'Pfd')
+GO
+SET IDENTITY_INSERT [instr].[MarketSector] OFF
+
+
+SET IDENTITY_INSERT [ord].[Broker] ON 
+GO
+INSERT [ord].[Broker] ([BrokerId], [Name], [Code], ) VALUES (1, N'Morgan Stanley', N'MS')
+GO
+INSERT [ord].[Broker] ([BrokerId], [Name], [Code], ) VALUES (2, N'JP Morgan', N'JPM')
+GO
+SET IDENTITY_INSERT [ord].[Broker] OFF
+GO
+INSERT [ord].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (1, N'EQU', N'Equities')
+GO
+INSERT [ord].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (2, N'GENFUT', N'Generic Future Contract')
+GO
+INSERT [ord].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (3, N'FUT', N'Monthly Future Contract')
+GO
+INSERT [ord].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (4, N'CurrencyPair', N'CurrencyPair Currency Pair ')
+GO
+INSERT [ord].[InstrumentType] ([InstrumentTypeId], [Mnemonic], [Description]) VALUES (5, N'CurrencyPairFWD', N'FX Forward')
+GO
+SET IDENTITY_INSERT [ord].[TradingAccount] ON 
+GO
+INSERT [ord].[TradingAccount] ([TradingAccountId], [Code], [BrokerId]) VALUES (1, N'MS1_ACC', 1)
+GO
+SET IDENTITY_INSERT [ord].[TradingAccount] OFFf
+GO
+SET IDENTITY_INSERT [ord].[TradeMode] ON 
+GO
+INSERT [ord].[TradeMode] ([TradeModeId], [Mnemonic], [Description]) VALUES (1, N'REGULAR', N'Default mode')
+GO
+INSERT [ord].[TradeMode] ([TradeModeId], [Mnemonic], [Description]) VALUES (2, N'EFRP', N'EFRP for currency futures')
+GO
+SET IDENTITY_INSERT [ord].[TradeMode] OFF
+GO
+SET IDENTITY_INSERT [ord].[TradingAccountSelectionRule] ON 
+GO
+INSERT [ord].[TradingAccountSelectionRule] ([TradingAccountSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentTypeId], [TradeModeId], [TradingAccountId]) VALUES (4, 1, 1, 1, 1, 1)
+GO
+INSERT [ord].[TradingAccountSelectionRule] ([TradingAccountSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentTypeId], [TradeModeId], [TradingAccountId]) VALUES (1004, 1, 1, 3, 1, 1)
+GO
+INSERT [ord].[TradingAccountSelectionRule] ([TradingAccountSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentTypeId], [TradeModeId], [TradingAccountId]) VALUES (1005, 1, 1, 5, 1, 1)
+GO
+SET IDENTITY_INSERT [ord].[TradingAccountSelectionRule] OFF
+GO
+SET IDENTITY_INSERT [ord].[TradeModeSelectionRule] ON 
+GO
+INSERT [ord].[TradeModeSelectionRule] ([TradeModeSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentId], [TradeModeId]) VALUES (1, 1, 1, 1, 1)
+GO
+INSERT [ord].[TradeModeSelectionRule] ([TradeModeSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentId], [TradeModeId]) VALUES (2, 1, 1, 3, 1)
+GO
+INSERT [ord].[TradeModeSelectionRule] ([TradeModeSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentId], [TradeModeId]) VALUES (3, 1, 1, 5, 1)
+GO
+SET IDENTITY_INSERT [ord].[TradeModeSelectionRule] OFF
+GO
+SET IDENTITY_INSERT [ord].[OrderType] ON 
+GO
+INSERT [ord].[OrderType] ([OrderTypeId], [Mnemonic], [Name], [Description]) VALUES (1, N'MKT', N'Market Order', N'Execute immediately at the best available price.')
+GO
+INSERT [ord].[OrderType] ([OrderTypeId], [Mnemonic], [Name], [Description]) VALUES (3, N'LMT', N'Limit Order', N'Execute at  at a specified price or better.')
+GO
+INSERT [ord].[OrderType] ([OrderTypeId], [Mnemonic], [Name], [Description]) VALUES (4, N'STP', N'Stop Order', N'Execute once the market price reaches a specified stop price')
+GO
+INSERT [ord].[OrderType] ([OrderTypeId], [Mnemonic], [Name], [Description]) VALUES (5, N'STL', N'Stop Limit Order', N'A combination of a stop order and a limit order.')
+GO
+INSERT [ord].[OrderType] ([OrderTypeId], [Mnemonic], [Name], [Description]) VALUES (6, N'TSTP', N'Trailing Stop Order', N'A stop order that adjusts the stop price based on changes in the market price.')
+GO
+SET IDENTITY_INSERT [ord].[OrderType] OFF
+GO
+SET IDENTITY_INSERT [ord].[ExecutionAlgorithm] ON 
+GO
+INSERT [ord].[ExecutionAlgorithm] ([ExecutionAlgorithmId], [Mnmemonic], [Name]) VALUES (1, N'VWAP', N'Volume-Weighted Average Price')
+GO
+INSERT [ord].[ExecutionAlgorithm] ([ExecutionAlgorithmId], [Mnmemonic], [Name]) VALUES (2, N'TWAP', N'Time-Weighted Average Price')
+GO
+INSERT [ord].[ExecutionAlgorithm] ([ExecutionAlgorithmId], [Mnmemonic], [Name]) VALUES (3, N'CLOSE', N'Close')
+GO
+INSERT [ord].[ExecutionAlgorithm] ([ExecutionAlgorithmId], [Mnmemonic], [Name]) VALUES (4, N'TGTSTRIKE', N'Target Strike')
+GO
+INSERT [ord].[ExecutionAlgorithm] ([ExecutionAlgorithmId], [Mnmemonic], [Name]) VALUES (5, N'EXECDESK', N'Manual Desk Execution')
+GO
+SET IDENTITY_INSERT [ord].[ExecutionAlgorithm] OFF
+GO
+SET IDENTITY_INSERT [ord].[ExecutionChannel] ON 
+GO
+INSERT [ord].[ExecutionChannel] ([ExecutionChannelId], [Mnemonic], [Description]) VALUES (1, N'EMSX', N'ems bloom')
+GO
+SET IDENTITY_INSERT [ord].[ExecutionChannel] OFF
+GO
+SET IDENTITY_INSERT [ord].[HandlingInstruction] ON 
+GO
+INSERT [ord].[HandlingInstruction] ([HandlingInstructionId], [Code], [Description]) VALUES (1, N'TEST', N'just for test')
+GO
+SET IDENTITY_INSERT [ord].[HandlingInstruction] OFF
+GO
+SET IDENTITY_INSERT [ord].[TimeInForce] ON 
+GO
+INSERT [ord].[TimeInForce] ([TimeInForceId], [Mnemonic], [Name], [Description]) VALUES (1, N'DAY', N'Day', N'stay active on day')
+GO
+SET IDENTITY_INSERT [ord].[TimeInForce] OFF
+GO
+SET IDENTITY_INSERT [ord].[ExecutionProfile] ON 
+GO
+INSERT [ord].[ExecutionProfile] ([ExecutionProfileId], [OrderTypeId], [TimeInForceId], [ExecutionAlgorithmId], [ExecutionAlgorithmParamSetId], [HandlingInstructionId], [ExecutionChannelId]) VALUES (1, 1, 1, 1, NULL, 1, 1)
+GO
+SET IDENTITY_INSERT [ord].[ExecutionProfile] OFF
+GO
+SET IDENTITY_INSERT [ord].[ExecutionProfileSelectionRule] ON 
+GO
+INSERT [ord].[ExecutionProfileSelectionRule] ([ExecutionProfileSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentTypeId], [TradeModeId], [ExecutionProfileId]) VALUES (2, 1, 1, 1, 1, 1)
+GO
+INSERT [ord].[ExecutionProfileSelectionRule] ([ExecutionProfileSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentTypeId], [TradeModeId], [ExecutionProfileId]) VALUES (1002, 1, 1, 3, 1, 1)
+GO
+INSERT [ord].[ExecutionProfileSelectionRule] ([ExecutionProfileSelectionRuleId], [PortfolioId], [BrokerId], [InstrumentTypeId], [TradeModeId], [ExecutionProfileId]) VALUES (1003, 1, 1, 5, 1, 1)
+GO
+SET IDENTITY_INSERT [ord].[ExecutionProfileSelectionRule] OFF
+GO
+SET IDENTITY_INSERT [ord].[BrokerSelectionRule] ON 
+GO
+INSERT [ord].[BrokerSelectionRule] ([BrokerSelectionRuleId], [PortfolioId], [InstrumentTypeId], [BrokerId]) VALUES (1, 1, 1, 1)
+GO
+INSERT [ord].[BrokerSelectionRule] ([BrokerSelectionRuleId], [PortfolioId], [InstrumentTypeId], [BrokerId]) VALUES (2, 1, 2, 1)
+GO
+INSERT [ord].[BrokerSelectionRule] ([BrokerSelectionRuleId], [PortfolioId], [InstrumentTypeId], [BrokerId]) VALUES (3, 1, 3, 1)
+GO
+INSERT [ord].[BrokerSelectionRule] ([BrokerSelectionRuleId], [PortfolioId], [InstrumentTypeId], [BrokerId]) VALUES (4, 1, 5, 1)
+GO
+SET IDENTITY_INSERT [ord].[BrokerSelectionRule] OFF
+GO
+SET IDENTITY_INSERT [risk].[RelationalOperator] ON 
+GO
+INSERT [risk].[RelationalOperator] ([RelationalOperatorId], [Mnemonic], [Description]) VALUES (1, N'GT', N'Greather Than')
+GO
+INSERT [risk].[RelationalOperator] ([RelationalOperatorId], [Mnemonic], [Description]) VALUES (2, N'GET', N'Greather Or Equal Than')
+GO
+INSERT [risk].[RelationalOperator] ([RelationalOperatorId], [Mnemonic], [Description]) VALUES (3, N'LT', N'Less Than')
+GO
+INSERT [risk].[RelationalOperator] ([RelationalOperatorId], [Mnemonic], [Description]) VALUES (4, N'LEQ', N'Less Or Equal Than')
+GO
+INSERT [risk].[RelationalOperator] ([RelationalOperatorId], [Mnemonic], [Description]) VALUES (5, N'EQ', N'Equal')
+GO
+INSERT [risk].[RelationalOperator] ([RelationalOperatorId], [Mnemonic], [Description]) VALUES (6, N'NEQ', N'Not Equal')
+GO
+SET IDENTITY_INSERT [risk].[RelationalOperator] OFF
+GO
+SET IDENTITY_INSERT [risk].[ConstraintType] ON 
+GO
+INSERT [risk].[ConstraintType] ([ConstraintTypeId], [Mnemonic], [Name], [Description]) VALUES (1, N'SGE', N'Single Gross Exposure', N'single gross expo')
+GO
+INSERT [risk].[ConstraintType] ([ConstraintTypeId], [Mnemonic], [Name], [Description]) VALUES (2, N'SNE', N'Single Net Exposure', N'Single Net Exposure')
+GO
+INSERT [risk].[ConstraintType] ([ConstraintTypeId], [Mnemonic], [Name], [Description]) VALUES (3, N'GGE', N'Global Gross Exposure', N'Global Gross Exposure')
+GO
+INSERT [risk].[ConstraintType] ([ConstraintTypeId], [Mnemonic], [Name], [Description]) VALUES (4, N'GNE', N'Global Net Exposure', N'Global Net Exposure')
+GO
+SET IDENTITY_INSERT [risk].[ConstraintType] OFF
+GO
+SET IDENTITY_INSERT [risk].[Constraint] ON 
+GO
+INSERT [risk].[Constraint] ([ConstraintId], [ConstraintTypeId], [RelationalOperatorId], [LimitValue], [Description], [FilterId]) VALUES (1, 3, 1)
+GO
+INSERT [risk].[Constraint] ([ConstraintId], [ConstraintTypeId], [RelationalOperatorId], [LimitValue], [Description], [FilterId]) VALUES (2, 3, 3)
+GO
+SET IDENTITY_INSERT [risk].[Constraint] OFF
+GO
+SET IDENTITY_INSERT [conv].[InstrumentMappingType] ON 
+GO
+INSERT [conv].[InstrumentMappingType] ([InstrumentMappingTypeId], [Mnemonic]) VALUES (1, N'GENERIC2FUTURE')
+GO
+INSERT [conv].[InstrumentMappingType] ([InstrumentMappingTypeId], [Mnemonic]) VALUES (2, N'CURNCYPAIR2FORWARD')
+GO
+INSERT [conv].[InstrumentMappingType] ([InstrumentMappingTypeId], [Mnemonic]) VALUES (3, N'CURNCYPAIR2INVERSE')
+GO
+INSERT [conv].[InstrumentMappingType] ([InstrumentMappingTypeId], [Mnemonic]) VALUES (4, N'FUTURE2FORWARD')
+GO
+INSERT [conv].[InstrumentMappingType] ([InstrumentMappingTypeId], [Mnemonic]) VALUES (5, N'EQUITY2CFD')
+GO
+SET IDENTITY_INSERT [conv].[InstrumentMappingType] OFF
+GO

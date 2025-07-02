@@ -1,0 +1,8 @@
+{
+  "weights": {
+    "module": {
+      "name": "Risk",
+      "enabled": true
+    }
+  }
+}

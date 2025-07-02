@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Quantaventis.Trading.Modules.EmsGateway.Infrastructure.API
+{
+    public struct OrderRefId
+    {
+        private string Value { get; }
+        public OrderRefId(string value)
+        {
+            this.Value = value;
+        }
+
+
+        public static implicit operator OrderRefId(string value) => new(value);
+
+        public static implicit operator string(OrderRefId orderRefId) => orderRefId.Value;
+
+        public override bool Equals(object? obj)
+        {
+            return obj is OrderRefId id &&
+                   Value == id.Value;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Value);
+        }
+
+        public override string? ToString()
+        {
+            return Value;
+        }
+    }
+}

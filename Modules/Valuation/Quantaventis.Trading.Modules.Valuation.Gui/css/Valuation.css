@@ -1,0 +1,9 @@
+﻿
+/* Add this to your site's stylesheet or in the component-specific styles */
+.negative-value {
+    color: red;
+}
+
+.positive-value {
+    color: black; /* or any default color you'd like for positive/zero values */
+}

@@ -1,0 +1,44 @@
+@page "/"
+@using Quantaventis.Trading.Shared.Abstractions.Modules
+@using Microsoft.AspNetCore.Components
+
+@inject IEnumerable<IModuleGuiConnector> RegisteredModules
+
+<a href="" title="Instruments" class="module-card-violet">
+    <div class="module-card-header">Instruments</div>
+</a>
+<a href="" title="Pricing" class="module-card-violet">
+    <div class="module-card-header">Pricing</div>
+</a>
+<a href="" title="Target Allocation" class="module-card-green">
+    <div class="module-card-header">Target Allocation</div>
+</a>
+<a href="" title="Conversion" class="module-card-green">
+    <div class="module-card-header">Conversion</div>
+</a>
+
+@foreach (var module in RegisteredModules)
+{
+    <a href="@module.MainPageLink" title="@module.Description" class="module-card-green">
+        <div class="module-card-header">@module.ModuleName</div>
+    </a>
+}
+<a href="" title="Risk" class="module-card-red">
+    <div class="module-card-header">Risk</div>
+</a>
+<a href="" title="Orders" class="module-card">
+    <div class="module-card-header">Orders</div>
+</a>
+<a href="" title="Routing" class="module-card">
+    <div class="module-card-header">Routing</div>
+</a>
+<a href="" title="EFRP" class="module-card-yellow">
+    <div class="module-card-header">EFRP</div>
+</a>
+<a href="" title="Execution" class="module-card-yellow">
+    <div class="module-card-header">Execution</div>
+</a>
+<a href="" title="Trade Allocation" class="module-card-yellow">
+    <div class="module-card-header">Trade Allocation</div>
+</a>
+

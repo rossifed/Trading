@@ -1,0 +1,8 @@
+{
+  "conversion": {
+    "module": {
+      "name": "Conversion",
+      "enabled": true
+    }
+  }
+}

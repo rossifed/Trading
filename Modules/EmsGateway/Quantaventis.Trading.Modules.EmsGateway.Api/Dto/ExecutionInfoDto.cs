@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Quantaventis.Trading.Modules.EmsGateway.Api.Dto
+{
+    public class ExecutionInfoDto
+    {
+        public string ExecutionAlgorithm { get; set; }
+        public string OrderType { get; set; }
+        public string TimeInForce { get; set; }
+        public string Account { get; set; }
+
+
+
+    }
+}

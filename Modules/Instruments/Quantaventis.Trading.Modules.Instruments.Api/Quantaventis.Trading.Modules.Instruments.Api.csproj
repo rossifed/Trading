@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Events\Handlers\**" />
+    <EmbeddedResource Remove="Events\Handlers\**" />
+    <None Remove="Events\Handlers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="module.instruments.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="module.instruments.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.Instruments.Domain\Quantaventis.Trading.Modules.Instruments.Domain.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.Instruments.Infrastructure\Quantaventis.Trading.Modules.Instruments.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.2" />
+  </ItemGroup>
+
+</Project>

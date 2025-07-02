@@ -1,0 +1,8 @@
+{
+  "constraints": {
+    "module": {
+      "name": "Constraints",
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,287 @@
+@inject IPortfolioDriftDao PortfolioDriftDao;
+<style>
+    .section-header {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .field-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3px; /* Reduced for a more compact design */
+    }
+
+    .consistent-label {
+        width: 200px;
+        margin-right: 8px;
+        font-size: 0.85em; /* Slightly smaller font for a more compact look */
+    }
+
+    .consistent-width {
+        width: 200px;
+        flex: 1;
+        font-size: 0.85em; /* Slightly smaller font for a more compact look */
+    }
+
+    .two-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .column {
+        flex: 50%;
+        padding: 0 10px;
+    }
+
+    /* Make RadzenFieldset text bold */
+    RadzenFieldset > legend {
+        font-weight: bold;
+    }
+
+    /* Add spacing between RadzenTemplateForm and PositionDriftComponent */
+    PositionDriftComponent {
+        margin-top: 20px;
+    }
+</style>
+
+@if (PortfolioDrift != null)
+{
+
+
+    <RadzenTemplateForm Data="@PortfolioDrift" >
+        <RadzenRow  Class="three-columns">
+        <RadzenColumn Size="12" SizeMD="4">
+            <RadzenStack>
+            <RadzenFieldset Text="PortfolioValuation Info">
+                <RadzenStack  Gap="1rem">
+                <RadzenRow >
+                    <RadzenColumn Size="12" SizeMD="4">
+                    <RadzenLabel Text="Portfolio Valuation Id:" Class="consistent-label" />
+
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="8">
+                     <RadzenTextBox Value="@PortfolioDrift.PortfolioValuationId.ToString()" ReadOnly="true" Class="consistent-width" />
+                    </RadzenColumn>
+                </RadzenRow>     
+                  <RadzenRow >
+                    <RadzenColumn Size="12" SizeMD="4">
+                   <RadzenLabel Text="Portfolio Value:" Class="consistent-label" />
+
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="8">
+                     <RadzenTextBox Value="@FormatValue(PortfolioDrift.PortfolioValuation.TotalValue, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                    </RadzenColumn>
+                </RadzenRow>
+                   <RadzenRow >
+                    <RadzenColumn Size="12" SizeMD="4">
+                        <RadzenLabel Text="Valuation Currency:" Class="consistent-label" />
+
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="8">
+                         <RadzenTextBox Value="@PortfolioDrift.PortfolioValuation.Currency" ReadOnly="true" Class="consistent-width" />
+                    </RadzenColumn>
+                </RadzenRow>
+                
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Valuated On:" Class="consistent-label" />
+
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@PortfolioDrift.PortfolioValuation.ValuationDate.ToString("yyyy-MM-dd")" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Net Exposure:" Class="consistent-label" />
+
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@FormatValue(PortfolioDrift.PortfolioValuation.NetExposure, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Gross Exposure:" Class="consistent-label" />
+
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@FormatValue(PortfolioDrift.PortfolioValuation.GrossExposure, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                </RadzenStack>
+            </RadzenFieldset>
+             </RadzenStack>
+        </RadzenColumn>
+
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenStack>
+                    <RadzenFieldset Text="Target Allocation  Info">
+                        <RadzenStack Gap="1rem">
+                            <RadzenRow >
+                                <RadzenColumn Size="12" SizeMD="4" >
+                                    <RadzenLabel Text="Allocation Valuation Id:" Class="three-columns" />
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@PortfolioDrift.TargetAllocationValuationId.ToString()" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Portfolio Value:" Class="consistent-label" />
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@FormatValue(PortfolioDrift.TargetAllocationValuation.PortfolioValue, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Valuation Currency:" Class="consistent-label" />
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@PortfolioDrift.TargetAllocationValuation.ValuationCurrency" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+             
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Valuated On:" Class="consistent-label" />
+
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@PortfolioDrift.TargetAllocationValuation.ValuatedOn.ToString("yyyy-MM-dd")" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Target Net Exposure:" Class="consistent-label" />
+
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@FormatValue(PortfolioDrift.TargetAllocationValuation.TargetNetExposure, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Target Gross Exposure:" Class="consistent-label" />
+
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@FormatValue(PortfolioDrift.TargetAllocationValuation.TargetGrossExposure, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                        </RadzenStack>
+                        
+
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenStack>
+                    <RadzenFieldset Text="Drift Info">
+                        <RadzenStack Gap="1rem">
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Portfolio Drift Id:" Class="consistent-label" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@PortfolioDrift.PortfolioDriftId.ToString()" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Net Exposure Drift:" Class="consistent-label" />
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@FormatValue(@PortfolioDrift.NetExposureDrift, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Gross Exposure Drift:" Class="consistent-label" />
+
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Value="@FormatValue(PortfolioDrift.NetExposureDrift, PortfolioDrift.PortfolioValuation.Currency)" ReadOnly="true" Class="consistent-width" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                          
+                        </RadzenStack>
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+    </RadzenRow>
+    </RadzenTemplateForm>
+    <div style="margin-top: 20px;">
+    <PositionDriftComponent PositionDrifts="@PortfolioDrift.PositionDrifts"  />
+    </div>
+}
+else
+{
+    @if (SelectedPortfolioId == null || SelectedPortfolioId == 0)
+    {
+        <p>No Portfolio Selected...</p>
+    }
+
+    else    
+    {
+        <p>No Portfolio Drift Found...</p>
+    }
+
+
+}
+
+@code {
+    @using Quantaventis.Trading.Modules.Rebalancing.Infrastructure.Entities;
+    @using Quantaventis.Trading.Modules.Rebalancing.Gui.Dao;
+    @using Radzen.Blazor;
+
+    [Parameter]
+    public byte? SelectedPortfolioId { get; set; }
+
+    private PortfolioDrift? PortfolioDrift;
+    private string FormatValue(decimal value, string currency)
+    {
+        return $"{value:0,0} {currency}";
+    }
+
+    private string FormatPercentage(decimal percentage)
+    {
+        return $"{percentage:P3}";
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        await FetchData();
+    }
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+    private async Task FetchData()
+    {
+        if (SelectedPortfolioId != null)
+        {
+            // Fetch data using SelectedPortfolioId
+            PortfolioDrift = await PortfolioDriftDao.GetLastByPortfolioIdAsync(SelectedPortfolioId.Value);
+
+            // In a real-world scenario, you would probably be calling an API here.
+        }
+        else
+        {
+            //   Valuation = null;
+        }
+    }
+}
+

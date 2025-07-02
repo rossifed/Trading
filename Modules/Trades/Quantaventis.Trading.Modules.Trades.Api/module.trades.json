@@ -1,0 +1,8 @@
+{
+  "trades": {
+    "module": {
+      "name": "Trades",
+      "enabled": true
+    }
+  }
+}

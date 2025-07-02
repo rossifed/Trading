@@ -1,0 +1,14 @@
+{
+  "marketdata": {
+    "module": {
+      "name": "MarketData",
+      "enabled": true
+    },
+    "AzureBlobStorage": {
+      "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=xxxxxx;AccountKey=xxxxxx;EndpointSuffix=core.windows.net",
+      "ContainerName": "incomingdata",
+      "DownloadFolder": "C:\\Production\\MarketData",
+      "DecompressFile": true
+    }
+  }
+}

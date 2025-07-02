@@ -1,0 +1,1 @@
+Scaffold-DbContext Name=TradingDatabase Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context PortfoliosDbContext -Schemas port -Force -namespace Quantaventis.Trading.Modules.Portfolios.Infrastructure.Entities

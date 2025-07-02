@@ -1,0 +1,10 @@
+{
+  "rebalancing": {
+    "module": {
+      "name": "Rebalancing",
+      "enabled": true
+    },
+    "TradeDateSwitchTimeStr": "23:00"
+
+  }
+}

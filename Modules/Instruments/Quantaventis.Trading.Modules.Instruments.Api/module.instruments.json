@@ -1,0 +1,14 @@
+{
+  "instruments": {
+    "module": {
+      "name": "Instruments",
+      "enabled": true
+    },
+    "AzureBlobStorage": {
+      "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=xxxxxx;AccountKey=xxxxxx;EndpointSuffix=core.windows.net",
+      "ContainerName": "incomingdata",
+      "DownloadFolder": "C:\\Production\\RefData",
+      "DecompressFile": true
+    }
+  }
+}

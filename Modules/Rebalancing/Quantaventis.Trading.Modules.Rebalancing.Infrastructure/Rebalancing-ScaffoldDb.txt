@@ -1,0 +1,1 @@
+Scaffold-DbContext Name=TradingDatabase Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context RebalancingDbContext -Schemas rebal -Force -namespace Quantaventis.Trading.Modules.Rebalancing.Infrastructure.Entities

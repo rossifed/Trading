@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="module.rebalancing.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="module.rebalancing.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.Rebalancing.Domain\Quantaventis.Trading.Modules.Rebalancing.Domain.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.Rebalancing.Infrastructure\Quantaventis.Trading.Modules.Rebalancing.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

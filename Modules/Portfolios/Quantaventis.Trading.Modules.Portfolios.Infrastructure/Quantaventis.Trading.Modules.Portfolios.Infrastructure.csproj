@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Caching\**" />
+    <Compile Remove="Commands\**" />
+    <Compile Remove="Contexts\**" />
+    <Compile Remove="Dispatchers\**" />
+    <Compile Remove="Events\**" />
+    <Compile Remove="Mapping\**" />
+    <Compile Remove="Messaging\**" />
+    <Compile Remove="Modules\**" />
+    <Compile Remove="Properties\**" />
+    <Compile Remove="Queries\**" />
+    <EmbeddedResource Remove="Caching\**" />
+    <EmbeddedResource Remove="Commands\**" />
+    <EmbeddedResource Remove="Contexts\**" />
+    <EmbeddedResource Remove="Dispatchers\**" />
+    <EmbeddedResource Remove="Events\**" />
+    <EmbeddedResource Remove="Mapping\**" />
+    <EmbeddedResource Remove="Messaging\**" />
+    <EmbeddedResource Remove="Modules\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <EmbeddedResource Remove="Queries\**" />
+    <None Remove="Caching\**" />
+    <None Remove="Commands\**" />
+    <None Remove="Contexts\**" />
+    <None Remove="Dispatchers\**" />
+    <None Remove="Events\**" />
+    <None Remove="Mapping\**" />
+    <None Remove="Messaging\**" />
+    <None Remove="Modules\**" />
+    <None Remove="Properties\**" />
+    <None Remove="Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FlexLabs.EntityFrameworkCore.Upsert" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Quantaventis.Trading.Modules.Portfolios.Domain\Quantaventis.Trading.Modules.Portfolios.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

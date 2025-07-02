@@ -1,0 +1,43 @@
+@namespace Quantaventis.Trading.Modules.Valuation.Gui.Components
+@inject IPortfolioDao daoService;
+
+<RadzenLabel Text="Portfolios:" Class="consistent-label" />
+<RadzenDropDown @bind-Value=@selectedPortfolioId
+Data ="@Portfolios"
+
+    TextProperty="Name"
+    ValueProperty="PortfolioId"
+    Placeholder="Select a portfolio..."
+    />
+
+<RadzenTabs>
+        <Tabs>
+    <RadzenTabsItem Text="Target Allocation Valuation">
+        <TargetAllocationValuationComponent SelectedPortfolioId="@selectedPortfolioId" />
+    </RadzenTabsItem>
+    <RadzenTabsItem Text="Portfolio Valuation">
+        <PortfolioValuationComponent SelectedPortfolioId="@selectedPortfolioId" />
+    </RadzenTabsItem>
+        </Tabs>
+</RadzenTabs>
+
+
+@code {
+    @using Quantaventis.Trading.Modules.Valuation.Infrastructure.Entities;
+    @using Quantaventis.Trading.Modules.Valuation.Gui.Dao;
+    @using Radzen.Blazor;
+    private byte? selectedPortfolioId;
+    private IEnumerable<Portfolio> Portfolios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Portfolios = await daoService.GetAllAsync();
+    }
+
+    void OnValueChanged(object value)
+    {
+        selectedPortfolioId = (byte)value;
+    }
+
+   
+}

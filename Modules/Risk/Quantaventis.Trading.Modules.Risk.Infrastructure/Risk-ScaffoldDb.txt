@@ -1,0 +1,1 @@
+Scaffold-DbContext Name=TradingDatabase Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context RiskDbContext -Schemas risk -Force -namespace Quantaventis.Trading.Modules.Risk.Infrastructure.Entities

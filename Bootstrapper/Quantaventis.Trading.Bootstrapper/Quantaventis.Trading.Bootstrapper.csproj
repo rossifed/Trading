@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="5.3.2" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Booking\Quantaventis.Trading.Modules.Booking.Api\Quantaventis.Trading.Modules.Booking.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Conversion\Quantaventis.Trading.Modules.Conversion.Api\Quantaventis.Trading.Modules.Conversion.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\EFRP\Quantaventis.Trading.Modules.EFRP.Api\Quantaventis.Trading.Modules.EFRP.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\FXGOGateway\Quantaventis.Trading.Modules.FXGOGateway.Api\Quantaventis.Trading.Modules.FXGOGateway.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Instruments\Quantaventis.Trading.Modules.Instruments.Api\Quantaventis.Trading.Modules.Instruments.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\MarketData\Quantaventis.Trading.Modules.MarketData.Api\Quantaventis.Trading.Modules.MarketData.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Orders\Quantaventis.Trading.Modules.Orders.Api\Quantaventis.Trading.Modules.Orders.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Portfolios\Quantaventis.Trading.Modules.Portfolios.Api\Quantaventis.Trading.Modules.Portfolios.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Positions\Quantaventis.Trading.Modules.Positions.Api\Quantaventis.Trading.Modules.Positions.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Rebalancing\Quantaventis.Trading.Modules.Rebalancing.Api\Quantaventis.Trading.Modules.Rebalancing.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Risk\Quantaventis.Trading.Modules.Risk.Api\Quantaventis.Trading.Modules.Risk.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Transmission\Quantaventis.Trading.Modules.Transmission.Api\Quantaventis.Trading.Modules.Transmission.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Valuation\Quantaventis.Trading.Modules.Valuation.Api\Quantaventis.Trading.Modules.Valuation.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Weights\Quantaventis.Trading.Modules.Weights.Api\Quantaventis.Trading.Modules.Weights.Api.csproj" />
+    <ProjectReference Include="..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

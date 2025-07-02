@@ -1,0 +1,1 @@
+Scaffold-DbContext Name=TradingDatabase Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context WeightsDbContext -Schemas wght  -Force -namespace Quantaventis.Trading.Modules.Weights.Infrastructure.Entities

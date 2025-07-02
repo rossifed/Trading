@@ -1,0 +1,34 @@
+{
+  "transmission": {
+    "module": {
+      "name": "Transmission",
+      "enabled": true
+    },
+    "FileGeneration": {
+      "WorkingFolder": "C:\\Production\\FilesTransmission"
+
+    },
+    "GpgEncryption": {
+      "GpgPath": "C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe",
+      "Homedir": "C:\\Users\\adm.trading.Quantaventis\\AppData\\Roaming\\gnupg",
+      "Passphrase": "xxxxxx"
+    },
+    "FileTransmission": {
+      "EodTransmissionTimeUtc": "15:03"
+    },
+    "FileArchiving": {
+      "TimestampFormat": "yyyyMMddHHmmss",
+      "SuccessFolderName": "Sent",
+      "ErrorFolderName": "Error"
+    },
+    "SMTP": {
+      "Host": "smtp.office365.com",
+      "Port": 587,
+      "SenderEmail": "noreply@Quantaventis.ai",
+      "CredentialEmail": "noreply@Quantaventis.ai",
+      "CredentialPassword": "xxxxxx",
+      "EnableSsl": true
+
+    }
+  }
+}

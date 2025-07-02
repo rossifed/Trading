@@ -1,0 +1,1 @@
+Scaffold-DbContext Name=TradingDatabase Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context RollingDbContext -Schema roll -Force -namespace Quantaventis.Trading.Modules.Rolling.Infrastructure.Entities

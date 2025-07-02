@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\custom.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\custom.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Radzen.Blazor" Version="4.32.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Conversion\Quantaventis.Trading.Modules.Conversion.Api\Quantaventis.Trading.Modules.Conversion.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\EmsGateway\Quantaventis.Trading.Modules.EmsGateway.Api\Quantaventis.Trading.Modules.EmsGateway.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Instruments\Quantaventis.Trading.Modules.Instruments.Api\Quantaventis.Trading.Modules.Instruments.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Orders\Quantaventis.Trading.Modules.Orders.Api\Quantaventis.Trading.Modules.Orders.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Portfolios\Quantaventis.Trading.Modules.Portfolios.Api\Quantaventis.Trading.Modules.Portfolios.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Rebalancing\Quantaventis.Trading.Modules.Rebalancing.Api\Quantaventis.Trading.Modules.Rebalancing.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Risk\Quantaventis.Trading.Modules.Risk.Api\Quantaventis.Trading.Modules.Risk.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Valuation\Quantaventis.Trading.Modules.Valuation.Api\Quantaventis.Trading.Modules.Valuation.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Weights\Quantaventis.Trading.Modules.Weights.Api\Quantaventis.Trading.Modules.Weights.Api.csproj" />
+    <ProjectReference Include="..\..\Shared\Quantaventis.Trading.Shared.Abstractions\Quantaventis.Trading.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Shared\Quantaventis.Trading.Shared.Infrastructure\Quantaventis.Trading.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

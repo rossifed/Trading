@@ -1,0 +1,1 @@
+Scaffold-DbContext Name=TradingDatabase Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context EfrpDbContext -Schemas efrp -Force -namespace Quantaventis.Trading.Modules.EFRP.Infrastructure.Entities

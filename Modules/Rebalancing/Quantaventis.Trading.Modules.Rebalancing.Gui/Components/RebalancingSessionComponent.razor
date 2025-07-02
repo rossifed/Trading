@@ -1,0 +1,217 @@
+@inject IRebalancingSessionDao RebalancingSessionDao;
+@inject HttpClient HttpClient
+<style>
+    .section-header {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .field-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3px; /* Reduced for a more compact design */
+    }
+
+    .consistent-label {
+        width: 200px;
+        margin-right: 8px;
+        font-size: 0.85em; /* Slightly smaller font for a more compact look */
+    }
+
+    .consistent-width {
+        width: 200px;
+        flex: 1;
+        font-size: 0.85em; /* Slightly smaller font for a more compact look */
+    }
+
+    .two-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .column {
+        flex: 50%;
+        padding: 0 10px;
+    }
+
+    /* Make RadzenFieldset text bold */
+    RadzenFieldset > legend {
+        font-weight: bold;
+    }
+
+    /* Add spacing between RadzenTemplateForm and PositionDriftComponent */
+    PositionDriftComponent {
+        margin-top: 20px;
+    }
+</style>
+
+@if (RebalancingSession != null)
+{
+    <RadzenRow  Gap="1rem">
+    <RadzenColumn >
+            <RadzenCard style="width: 300px; margin: 20px;">
+                <div class="card-header">
+                    <h4>Last Rebalancing Session</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Session ID:</strong> @RebalancingSession.RebalancingSessionId</p>
+                    <p><strong>Status:</strong> @RebalancingSession.Status</p>
+                    <p><strong>Reason:</strong> @RebalancingSession.StatusReason</p>
+                    <p><strong>Started On:</strong> @RebalancingSession.StartedOn.ToString("g")</p>
+                    <p><strong>Ended On:</strong> @(RebalancingSession.EndedOn?.ToString("g") ?? "N/A")</p>
+                    <p><strong>Started By:</strong> @RebalancingSession.StartedBy</p>
+                </div>
+                <div class="card-footer">
+                    <!-- You can add a button or other actions here. For example: -->
+                    <RadzenButton Text="Start Rebalancing" Click="StartRebalancing" />
+                </div>
+            </RadzenCard>
+    </RadzenColumn>
+    <RadzenColumn >
+        <p>Rebalanced Portfolio Drifts:</p>
+            <RadzenDataGrid TItem="PortfolioDrift" Data="@PortfolioDrifts"
+                        ColumnWidth="200px" PageSize="10">
+                <Columns>
+                    <RadzenDataGridColumn TItem="PortfolioDrift" Title="Drift Id">
+                        <Template Context="data">
+                            <RadzenText TextStyle="TextStyle.Subtitle2">
+                                @(data.PortfolioDriftId)
+                            </RadzenText>
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="PortfolioDrift" Title="Portfolio Id">
+                        <Template Context="data">
+                            <RadzenText TextStyle="TextStyle.Subtitle2">
+                                @(data.PortfolioValuation.PortfolioId)
+                            </RadzenText>
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="PortfolioDrift" Title="Computed On">
+                        <Template Context="data">
+                            <RadzenText TextStyle="TextStyle.Subtitle2">
+                                @(data.ComputedOn.ToShortDateString())
+                            </RadzenText>
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="PortfolioDrift" Title="Portfolio Valuation Id">
+                        <Template Context="data">
+                            <RadzenText TextStyle="TextStyle.Subtitle2">
+                                @(data.PortfolioValuationId.ToString())
+                            </RadzenText>
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="PortfolioDrift" Title="Orders Count">
+                        <Template Context="data">
+                            <RadzenText TextStyle="TextStyle.Subtitle2">
+                                @(data.PositionDrifts.Where(x => x.TargetQuantity != 0).Count().ToString())
+                            </RadzenText>
+                        </Template>
+                    </RadzenDataGridColumn>
+               
+                    <!-- Add other columns as needed -->
+                </Columns>
+            </RadzenDataGrid>
+    </RadzenColumn>
+   
+</RadzenRow>
+
+    
+}
+else
+{
+    @if (SelectedPortfolioId == null || SelectedPortfolioId == 0)
+    {
+        <p>No Portfolio Selected...</p>
+    }
+
+    else    
+    {
+        <p>No Rebalancing Session Found...</p>
+    }
+
+
+}
+
+@code {
+    @using System.Net.Http
+    @using System.Text.Json
+    @using System.Text
+    @using System.Net.Http.Headers;
+    @using Quantaventis.Trading.Modules.Rebalancing.Infrastructure.Entities;
+    @using Quantaventis.Trading.Modules.Rebalancing.Gui.Dao;
+    @using Radzen.Blazor;
+
+    [Parameter]
+    public byte? SelectedPortfolioId { get; set; }
+
+    private RebalancingSession? RebalancingSession;
+    private IEnumerable<PortfolioDrift> PortfolioDrifts;
+    private string FormatValue(decimal value, string currency)
+    {
+        return $"{value:0,0} {currency}";
+    }
+
+    private string FormatPercentage(decimal percentage)
+    {
+        return $"{percentage:P3}";
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        await FetchData();
+    }
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+
+    private async Task StartRebalancing()
+    {
+        try
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7200/Rebalancing/StartRebalancingSession");
+          //  request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
+  
+
+            // Set the empty JSON body
+            request.Content = new StringContent("{}", Encoding.UTF8, "application/json");
+
+
+            var response = await HttpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Handle success
+                var result = await response.Content.ReadAsStringAsync(); // Only if API returns some data
+            }
+            else
+            {
+                // Handle the error
+                var error = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error while starting rebalancing: {error}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}");
+        }
+    }
+
+    private async Task FetchData()
+    {
+        if (SelectedPortfolioId != null)
+        {
+            // Fetch data using SelectedPortfolioId
+            RebalancingSession = await RebalancingSessionDao.GetLastByPortfolioIdAsync(SelectedPortfolioId.Value);
+            if(RebalancingSession?.PortfolioDrifts != null)   
+            PortfolioDrifts = RebalancingSession.PortfolioDrifts;
+            // In a real-world scenario, you would probably be calling an API here.
+        }
+        else
+        {
+            //   Valuation = null;
+        }
+        StateHasChanged(); // Trigger update
+    }
+}
+

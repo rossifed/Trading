@@ -1,0 +1,21 @@
+﻿.shorter-select {
+    width: 200px; /* Adjust to your preference */
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.flex-item {
+    flex: 1 1 auto;
+    min-width: 150px; /* adjust as needed */
+}
+
+.negative-value {
+    color: red;
+}
+
+.smaller-text {
+    font-size: 0.8rem; /* adjust as needed */
+}

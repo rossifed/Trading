@@ -1,0 +1,1 @@
+Scaffold-DbContext Name=TradingDatabase Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Context ValuationDbContext -Schema val -Force -namespace Quantaventis.Trading.Modules.Valuation.Infrastructure.Entities

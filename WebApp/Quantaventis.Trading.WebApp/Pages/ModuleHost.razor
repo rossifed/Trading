@@ -1,0 +1,29 @@
+@page "/Module/{ModuleName}"
+@using Quantaventis.Trading.Shared.Abstractions.Modules;
+ 
+@inject IEnumerable<IModuleGuiConnector> ModuleGuiConnectors
+
+@code {
+    [Parameter]
+    public string ModuleName { get; set; }
+
+    private Type _selectedComponentType;
+
+    protected override void OnInitialized()
+    {
+        var selectedModule = ModuleGuiConnectors.FirstOrDefault(m => m.ModuleName == ModuleName);
+        if (selectedModule != null)
+        {
+            _selectedComponentType = selectedModule.MainComponentType;
+        }
+    }
+}
+
+@if (_selectedComponentType != null)
+{
+    <DynamicComponent Type="@_selectedComponentType" />
+}
+else
+{
+    <p>Module not found or it doesn't have a main component.</p>
+}

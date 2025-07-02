@@ -1,0 +1,28 @@
+{
+  "weights": {
+    "module": {
+      "name": "Weights",
+      "enabled": true
+    },
+    "AzureBlobFileOptions": {
+      "AzureBlobFileOptionsItems": [
+
+        {
+          "PortfolioId": 1,
+          "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=xxxxxx;AccountKey=xxxxxx==;EndpointSuffix=core.windows.net",
+          "ContainerName": "weights",
+          "DecompressFile": false,
+          "Separator": ";"
+        },
+        {
+          "PortfolioId": 2,
+          "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=xxxxxx;AccountKey=xxxxxx;EndpointSuffix=core.windows.net",
+          "ContainerName": "weights2",
+          "DecompressFile": true,
+          "Separator": ","
+        }
+      ]
+      // Add more portfolios as needed
+    }
+  }
+}

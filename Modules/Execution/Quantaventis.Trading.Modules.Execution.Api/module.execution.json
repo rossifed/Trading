@@ -1,0 +1,22 @@
+{
+  "execution": {
+    "module": {
+      "name": "Execution",
+      "enabled": true
+    }
+
+  },
+  "OrderExecution": {
+    "EodCutoffTimeUtc": "20:05"
+  },
+  "QuartzConfig": {
+    "Jobs": {
+      "FetchFillsJob": {
+        "CronExpression": "0 * * ? * *"
+
+      }
+    }
+
+  }
+  
+ }

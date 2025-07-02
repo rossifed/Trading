@@ -1,0 +1,12 @@
+{
+  "fxgogateway": {
+    "module": {
+      "name": "FXGOGateway",
+      "enabled": true
+    },
+    "FXGOFile": {
+      "WorkingFolder": "C:\\Production\\FxemOrders\\",
+      "FileSeparator": ","
+    }
+  }
+}

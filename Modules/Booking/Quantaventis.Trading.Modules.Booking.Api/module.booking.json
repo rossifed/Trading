@@ -1,0 +1,10 @@
+{
+  "booking": {
+    "module": {
+      "name": "Booking",
+      "enabled": true
+    }
+
+  }
+  
+ }

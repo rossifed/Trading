@@ -1,0 +1,8 @@
+{
+  "rolling": {
+    "module": {
+      "name": "Rolling",
+      "enabled": true
+    }
+  }
+}

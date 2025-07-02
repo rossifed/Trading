@@ -1,0 +1,126 @@
+{
+  "ScheduledTasks": {
+    "FetchFillsTask": {
+      "CronExpression": "0 10 22 ? * * *" // Every day at 22:10
+    }
+  },
+  "emsx": {
+    "module": {
+      "name": "EMSX",
+      "enabled": true
+    },
+
+    "EMSXSession": {
+      "HistoryServiceName": "//blp/emsx.history",
+      "ServiceName": "//blp/emapisvc",
+      "Host": "localhost",
+      "Port": 8194,
+      "TeamName": "xxxxxx",
+      "OpenSessionTimeout": 1000000
+    },
+    "FillHistory": {
+      "Uuids": [ "xxxxxx", "xxxxxx" ]
+    },
+    "EmsxOrderSyncTask": {
+      "CronExpression": "*/10 5-22 * * 1-5"
+    },
+    "OrderMapping": {
+      "AllocationFieldMappings": [
+        {
+          "Source": "TradingAccount",
+          "Destination": "Account",
+          "MapValue": false
+        },
+        {
+          "Source": "PortfolioId",
+          "Destination": "CustomNote2",
+          "MapValue": false
+        },
+        {
+          "Source": "PositionSide",
+          "Destination": "CustomNote3",
+          "MapValue": false
+        }
+      ],
+      "FieldMappings": [
+        {
+          "Source": "RebalancingSessionId",
+          "Destination": "CustomNote1",
+          "MapValue": false
+        },
+        {
+          "Source": "OrderId",
+          "Destination": "OrderRefId",
+          "MapValue": false
+        },
+        {
+          "Source": "Symbol",
+          "Destination": "Ticker",
+          "MapValue": false
+        },
+        {
+          "Source": "Quantity",
+          "Destination": "Amount",
+          "MapValue": false
+        },
+        {
+          "Source": "OrderType",
+          "Destination": "OrderType",
+          "MapValue": true
+        },
+        {
+          "Source": "TimeInForce",
+          "Destination": "TimeInForce",
+          "MapValue": true
+        },
+        {
+          "Source": "ExecutionAlgorithm",
+          "Destination": "Strategy",
+          "MapValue": true
+        },
+        {
+          "Source": "HandlingInstruction",
+          "Destination": "HandInstruction",
+          "MapValue": false
+        },
+        {
+          "Source": "OrderSide",
+          "Destination": "Side",
+          "MapValue": true
+        },
+        {
+          "Source": "TradingDesk",
+          "Destination": "Broker",
+          "MapValue": false
+        }
+      ],
+      "ValueMappings": {
+        "OrderType": {
+          "LMT": "LMT",
+          "MKT": "MKT",
+          "STL": "STL",
+          "STP": "STP",
+          "TSTP": "TSTP"
+        },
+        "TimeInForce": {
+          "DAY": "DAY"
+        },
+        "OrderSide": {
+          "B": "BUY",
+          "S": "SELL"
+        },
+        "ExecutionAlgorithm": {
+          "VWAP": "VWAP",
+          "CLOSE": "CLOSE",
+          "TGTSTRIKE": "TGTSTRIKE",
+          "TWAP": "TWAP"
+        },
+        "OrderSideMapping": {
+          "BUY": "B",
+          "SELL": "S"
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,109 @@
+<style>
+    .negative-value {
+        color: red;
+    }
+
+    .positive-value {
+        color: black; /* or any default color you'd like for positive/zero values */
+    }
+</style>
+@if (PositionValuations != null && PositionValuations.Any())
+{
+
+    <RadzenDataGrid TItem="PositionValuation"
+                Data="@PositionValuations"
+                AllowSorting="true"
+                AllowFiltering="true"
+                PageSize="10">
+    <Columns>
+            <RadzenDataGridColumn TItem="PositionValuation" Title="Symbol">
+                <Template Context="data">
+                <RadzenText TextStyle="TextStyle.Subtitle2" >
+                        @(data.Instrument?.Symbol)
+                    </RadzenText>
+                        
+                    
+                    
+                </Template>
+        </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="PositionValuation" Property="Weight" Title="Weight" Sortable="true">
+                <Template Context="data"  >
+                        <RadzenText  class="@GetNumberStyle(data.Weight)">
+                                     @FormatPercentage(data.Weight )
+                    </RadzenText>
+       
+            
+                </Template>
+
+        </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="PositionValuation" Property="Quantity" Title="Quantity" Sortable="true" />
+            <RadzenDataGridColumn TItem="PositionValuation" Property="InstrumentPrice" Title="Price" Sortable="true" />
+            <RadzenDataGridColumn TItem="PositionValuation" Property="InstrumentPriceCurrency" Title="Currency" Sortable="true" />
+            <RadzenDataGridColumn TItem="PositionValuation" Property="InstrumentPriceDate" Title="Priced On" Sortable="true">
+               <Template Context="data">
+                    @data.InstrumentPriceDate.ToString("dd/MM/yyyy") <!-- Replace 'your-date-format' with your desired format. E.g., "dd/MM/yyyy" -->
+             </Template>
+        </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="PositionValuation" Property="FxRate" Title="FxRate" Sortable="true" />
+
+            <RadzenDataGridColumn TItem="PositionValuation" Property="InstrumentValue" Title="Instrument Value" Sortable="true" />
+
+            <RadzenDataGridColumn TItem="PositionValuation" Property="NetExposure" Title="Net Exposure" Sortable="true">
+                <Template Context="data">
+                    <RadzenText  class="@GetNumberStyle(data.NetExposure)">
+                         @FormatNumber(@data.NetExposure)
+                    </RadzenText>
+                </Template>
+        </RadzenDataGridColumn> 
+            <RadzenDataGridColumn TItem="PositionValuation" Property="GrossExposure" Title="Gross Exposure" Sortable="true">
+                <Template Context="data">
+                    <RadzenText  class="@GetNumberStyle(data.GrossExposure)">
+                        @FormatNumber(@data.GrossExposure)
+                    </RadzenText>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="PositionValuation" Property="PnL" Title="PnL" Sortable="true">
+                <Template Context="data">
+                    <RadzenText class="@GetNumberStyle(data.PnL)">
+                        @FormatNumber(@data.PnL)
+                    </RadzenText>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="PositionValuation" Property="Roi" Title="ROI" Sortable="true">
+                <Template Context="data">
+                    <RadzenText class="@GetNumberStyle(data.Roi)">
+                        @FormatNumber(@data.Roi)
+                    </RadzenText>
+                </Template>
+            </RadzenDataGridColumn>
+
+    </Columns>
+</RadzenDataGrid>
+}
+else
+{
+    <p>No Valuated Positions to display...</p>
+}
+
+
+
+
+@code {
+    @using Quantaventis.Trading.Modules.Valuation.Infrastructure.Entities
+    @using Radzen.Blazor;
+    [Parameter]
+    public IEnumerable<PositionValuation> PositionValuations { get; set; }
+    public string GetNumberStyle(decimal number)
+    {
+        return number < 0 ? "negative-value" : "positive-value";
+    }
+    public string FormatPercentage(decimal number)
+    {
+        return $"{Math.Round(number * 100, 3)}%";
+    }
+
+    public string FormatNumber(decimal number)
+    {
+        return $"{number:#,###}".Replace(',', '\'');
+    }
+}

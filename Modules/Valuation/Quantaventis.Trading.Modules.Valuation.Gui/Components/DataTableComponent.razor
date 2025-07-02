@@ -1,0 +1,20 @@
+@typeparam TItem
+@code {
+    [Parameter] public IEnumerable<TItem> Items { get; set; }
+    // ... other necessary parameters like column specifications, actions, etc.
+}
+
+<!-- Here, you would render your table. The exact format will depend on the properties you want to display and any additional features you'd like (sorting, filtering, etc.) -->
+<table class="table">
+    <thead>
+        <!-- Render table headers here -->
+    </thead>
+    <tbody>
+        @foreach (var item in Items)
+        {
+                <tr>
+                 
+                </tr>
+        }
+    </tbody>
+</table>

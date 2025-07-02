@@ -1,0 +1,83 @@
+<style>
+    .negative-value {
+        color: red;
+    }
+
+    .positive-value {
+        color: black; /* or any default color you'd like for positive/zero values */
+    }
+</style>
+@if (PositionDrifts != null && PositionDrifts.Any())
+{
+
+    <RadzenDataGrid TItem="PositionDrift"
+                Data="@PositionDrifts"
+                AllowSorting="true"
+                AllowFiltering="true"
+                PageSize="10">
+    <Columns>
+            <RadzenDataGridColumn TItem="PositionDrift" Title="Symbol">
+                <Template Context="data">
+                <RadzenText TextStyle="TextStyle.Subtitle2" >
+                        @(data.InstrumentId)
+                    </RadzenText>
+                        
+                    
+                    
+                </Template>
+        </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="PositionDrift" Property="TargetWeight" Title="Target Weight" Sortable="true">
+                <Template Context="data"  >
+                        <RadzenText  class="@GetNumberStyle(data.TargetWeight)">
+                        @FormatPercentage(data.TargetWeight )
+                    </RadzenText>          
+                </Template>
+        </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="PositionDrift" Property="CurrentWeight" Title="Current Weight" Sortable="true">
+                <Template Context="data"  >
+                    <RadzenText class="@GetNumberStyle(data.CurrentWeight)">
+                        @FormatPercentage(data.CurrentWeight )
+                    </RadzenText>          
+                </Template>
+        </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn TItem="PositionDrift" Property="WeightDrift" Title="Weight Drift" Sortable="true">
+                <Template Context="data"  >
+                    <RadzenText class="@GetNumberStyle(data.WeightDrift)">
+                @FormatPercentage(data.WeightDrift )
+                    </RadzenText>          
+                </Template>
+        </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="PositionDrift" Property="TargetQuantity" Title="Target Quantity" Sortable="true" />
+            <RadzenDataGridColumn TItem="PositionDrift" Property="CurrentQuantity" Title="Current Quantity" Sortable="true" />
+            <RadzenDataGridColumn TItem="PositionDrift" Property="QuantityDrift" Title="Quantity Drift" Sortable="true" />
+    </Columns>
+</RadzenDataGrid>
+}
+else
+{
+    <p>No Valuated Positions to display...</p>
+}
+
+
+
+
+@code {
+    @using Quantaventis.Trading.Modules.Rebalancing.Infrastructure.Entities
+    @using Radzen.Blazor;
+    [Parameter]
+    public IEnumerable<PositionDrift> PositionDrifts { get; set; }
+    public string GetNumberStyle(decimal number)
+    {
+        return number < 0 ? "negative-value" : "positive-value";
+    }
+    public string FormatPercentage(decimal number)
+    {
+        return $"{Math.Round(number * 100, 3)}%";
+    }
+
+    public string FormatNumber(decimal number)
+    {
+        return $"{number:#,###}".Replace(',', '\'');
+    }
+}
